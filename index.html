@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>حاضر جواب | HAZER JAVAB</title>
+    <meta name="description" content="اپلیکیشن تمرین مکالمه و پاسخ سریع فارسی - ۶۰۰۰+ دیالوگ" />
+    <meta name="theme-color" content="#6366f1" />
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        direction: rtl;
+      }
+      html.light, html.light body {
+        background-color: #f8fafc !important;
+        color: #1e293b;
+      }
+      html.dark, html.dark body {
+        background-color: #0f172a !important;
+        color: #e2e8f0;
+      }
+    </style>
+    <script>
+      (function () {
+        const isInIframe = window.self !== window.top;
+        function applyThemeToDOM(theme) {
+          document.documentElement.classList.remove("light", "dark");
+          document.documentElement.classList.add(theme);
+        }
+        if (isInIframe) {
+          window.addEventListener("message", function (event) {
+            if (event.data && typeof event.data.theme === "string") {
+              const theme = event.data.theme;
+              if (theme === "light" || theme === "dark") {
+                applyThemeToDOM(theme);
+              }
+            }
+          });
+        } else {
+          applyThemeToDOM("light");
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
